@@ -114,7 +114,7 @@ GameManager.prototype.move = function (direction) {
           merged.mergedFrom = [tile, next];
 
           self.grid.insertTile(merged);
-          self.grid.removeTile(tile);
+          self.grid.removeTile(tile);21
 
           // Converge the two tiles' positions
           tile.updatePosition(positions.next);
@@ -123,7 +123,7 @@ GameManager.prototype.move = function (direction) {
           self.score += merged.value;
 
           // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+          //if (merged.value === 2048) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
         }
