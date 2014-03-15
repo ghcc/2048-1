@@ -26,6 +26,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     if (metadata.over) self.message(false); // You lose
     if (metadata.won) self.message(true); // You win!
+    
   });
 };
 
@@ -116,7 +117,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over!";
+  var message = won ? "神!" : "再来一次！";
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
