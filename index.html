@@ -143,17 +143,17 @@
 		function share() {
 
 			var time = document.querySelector("#timer").innerText;
+			var sourceUrl = "http://ghcc.github.io/2048/";
 
 			// 			var scoreContainer = document.querySelector(".score-container").innerText;
 			var bestContainer = document.querySelector(".best-container").innerText;
 			var scoreContainer = game.score;
 			var shareText = "2048%2B%2B挑战结果：耗时（" + time + "），最大数为（" + game.maxNumber
 					+ "），得分（" + scoreContainer + "），历史最高得分（" + bestContainer
-					+ "）";
-
+					+ "） " + sourceUrl;
 			window
 					.open("http://service.weibo.com/share/share.php?appkey=&url=&title="
-							+ shareText);
+							+ shareText + "&sourceUrl="+sourceUrl);
 		}
 	</script>
 </body>
