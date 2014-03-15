@@ -5,11 +5,13 @@ function GameManager(size, InputManager, Actuator, ScoreManager) {
   this.actuator     = new Actuator;
 
   this.startTiles   = 2;
+  
+  this.maxNumber   = 0;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
 
-  this.setup();
+//  this.setup();
 }
 
 // Restart the game
@@ -40,11 +42,23 @@ GameManager.prototype.addStartTiles = function () {
   }
 };
 
+var allValue = 2;
+var allTiles = 0;
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
-    var tile = new Tile(this.grid.randomAvailableCell(), value);
+	  
+	  var value = Math.random() < 0.9 ? 2 : 4;
+	  var tile = new Tile(this.grid.randomAvailableCell(), value);
+	  
+//	  if (allValue < 32768) {
+////		  value = allValue;
+//		  value = 32768;
+//		  allValue = allValue * 2;
+//	  }
+//    var position = {x:allTiles%4,y:Math.floor(allTiles/4)};
+//    allTiles ++;
+//    var tile = new Tile(position, value);
 
     this.grid.insertTile(tile);
   }
@@ -122,8 +136,12 @@ GameManager.prototype.move = function (direction) {
           // Update the score
           self.score += merged.value;
 
+          if (merged.value > self.maxNumber) {
+        	  self.maxNumber = merged.value;
+          }
+          
           // The mighty 2048 tile
-          //if (merged.value === 2048) self.won = true;
+          if (merged.value === 65536) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
         }

@@ -15,7 +15,6 @@
 	content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
-<<<<<<< HEAD
 	<div class="container">
 		<div class="heading">
 			<h1 class="title">2048++</h1>
@@ -24,82 +23,23 @@
 				<div class="best-container">0</div>
 			</div>
 		</div>
-		<p class="game-intro">
-			 键盘挪动数字，使数字最大（有<a href="#way">攻略</a>哦）
-		</p>
-=======
-  <div class="container">
-    <div class="heading">
-      <h1 class="title">2048</h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div>
-    </div>
-    <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-
-    <div class="game-container">
-      <div class="game-message">
-        <p></p>
-        <div class="lower">
-          <a class="retry-button">Try again</a>
-          <div class="score-sharing"></div>
-        </div>
-      </div>
-
-      <div class="grid-container">
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-      </div>
-
-      <div class="tile-container">
-
-      </div>
-    </div>
-
-    <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
-    </p>
-    <hr>
-    <p>
-    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
-    </p>
-    <hr>
-    <p>
-    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
-    </p>
-    <div class="sharing">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out 2048, a game where you join numbers to score high! #2048game" data-via="gabrielecirulli">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
->>>>>>> parent of d7fc579... Update index.html
+		<!-- 		<p class="game-intro"> -->
+		<!-- 			键盘挪动数字,使数字最大（<a href="#way">看攻略</a>） -->
+		<!-- 		</p> -->
+		<br>
+		<div style="padding: 5px;">
+			<input id="timer-start-btn" class="b2t"
+				onclick="game.restart();InitializeTimer(form);" type="button"
+				value="    开始    "> <input class="b3t"
+				onclick="StopTheClock()" type="button" value="    停止    "> <span
+				id="timer" class="timer-container">00 : 00 . 00 </span>
+		</div>
 
 		<div class="game-container">
 			<div class="game-message">
 				<p></p>
 				<div class="lower">
-					<a class="retry-button">Try again</a>
+					<a class="retry-button">再玩一次</a>
 				</div>
 			</div>
 
@@ -132,7 +72,33 @@
 
 			<div class="tile-container"></div>
 		</div>
+		<br> <br>
+		<p>
+			<a class="share_sina" href="javascript:void();" onclick="share();"
+				target="" title="分享到新浪微博">分享到新浪微博</a>
+		</p>
+		<!-- 		<!-- JiaThis Button BEGIN -->
 
+		<!-- 		<div class="jiathis_style_32x32"> -->
+		<!-- 			<a class="jiathis_button_tsina"></a> -->
+		<!-- 			<a class="jiathis_button_qzone"></a>  -->
+		<!-- 			<a class="jiathis_button_tqq"></a> <a class="jiathis_button_renren"></a> -->
+		<!-- 			<a class="jiathis_button_kaixin001"></a> <a -->
+		<!-- 				href="http://www.jiathis.com/share?uid=1757913" -->
+		<!-- 				class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a> -->
+		<!-- 			<a class="jiathis_counter_style"></a> -->
+		<!-- 		</div> -->
+		<!-- 		<script type="text/javascript"> -->
+		<!-- // 			var jiathis_config = { -->
+		<!-- // 				data_track_clickback : 'true' -->
+		<!-- // 			}; -->
+		<!-- 		</script> -->
+		<!-- 		<script type="text/javascript" -->
+		<!-- 			src="http://v3.jiathis.com/code_mini/jia.js?uid=1361942435250920" -->
+		<!-- 			charset="utf-8"></script> -->
+		<!-- 		<!-- JiaThis Button END -->
+
+		<hr>
 		<p class="game-explanation">玩法:
 			使用键盘方向键，或者触屏手机，左右上下移动，遇到相同的数据就会加起来。</p>
 		<hr>
@@ -140,15 +106,14 @@
 			<a name="way"></a>
 		<h2>攻略</h2>
 
-		攻略一：梯度玩法，始终让左上角值最大，然后向右和向下依次递减（可盲玩） <br>
-		<br> 攻略二：首行优先发，先让第一行优先填充数 <br>
-		<br> 攻略三：攻略一的递减原则和攻略二的首行原则的结合。<br>
+		攻略一：梯度玩法，始终让左上角值最大，然后向右和向下依次递减（可盲玩） <br> <br>
+		攻略二：首行优先发，先让第一行优先填充数 <br> <br> 攻略三：攻略一的递减原则和攻略二的首行原则的结合。<br>
 		<br>
 		</p>
 		<hr>
 		<p>
-			汉化并且，把原来的最大2048的限制去掉了<br>
-			原作者： <a href="http://gabrielecirulli.com" target="_blank">Gabriele
+			汉化并且，把原来的最大2048的限制去掉了<br> 原作者： <a
+				href="http://gabrielecirulli.com" target="_blank">Gabriele
 				Cirulli.</a> Based on <a
 				href="https://itunes.apple.com/us/app/1024!/id823499224"
 				target="_blank">1024 by Veewo Studio</a> and conceptually similar to
@@ -165,5 +130,31 @@
 	<script src="js/local_score_manager.js"></script>
 	<script src="js/game_manager.js"></script>
 	<script src="js/application.js"></script>
+
+	<script type="text/javascript" src="js/timer.js"></script>
+
+	<script>
+		var shareText = "2048++本次得分0，历史最高得分0";
+		var jiathis_config = {
+			title : shareText
+		}
+	</script>
+	<script type="text/javascript">
+		function share() {
+
+			var time = document.querySelector("#timer").innerText;
+
+			// 			var scoreContainer = document.querySelector(".score-container").innerText;
+			var bestContainer = document.querySelector(".best-container").innerText;
+			var scoreContainer = game.score;
+			var shareText = "2048挑战结果：耗时（" + time + "），最大数为（" + game.maxNumber
+					+ "），得分（" + scoreContainer + "），历史最高得分（" + bestContainer
+					+ "）";
+
+			window
+					.open("http://service.weibo.com/share/share.php?appkey=&url=&title="
+							+ shareText);
+		}
+	</script>
 </body>
 </html>
