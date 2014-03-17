@@ -4,7 +4,7 @@ var min = 0;
 var minn = 0;
 var timerID = null;
 var timerRunning = false;
-var ttclock = "0 分钟 &nbsp;&nbsp;0 ";
+var ttclock = "00 : 00 . 000";
 
 function InitializeTimer(form) {
 	var now = new Date();
@@ -46,7 +46,7 @@ function StartTheTimer() {
 	document.all.timer.innerText = ttclock;
 
 	timerRunning = true;
-	timerID = self.setTimeout("StartTheTimer()", 0);
+	timerID = self.setTimeout("StartTheTimer()", 10);
 	
 }
 
@@ -59,7 +59,7 @@ function countdown_clock(ttclock) {
 function countdown(ttclock) {
 
 	document.all.countdown.innerHTML = ttclock;
-	setTimeout('countdown(ttclock);', 0);
+	setTimeout('countdown(ttclock);', 10);
 
 }
 
