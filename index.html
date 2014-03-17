@@ -1,79 +1,165 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8">
+<title>2048++</title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="2048++ : A small clone of 1024 (https://play.google.com/store/apps/details?id=com.veewo.a1024)" />
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="2048++ : A small clone of 1024 (https://play.google.com/store/apps/details?id=com.veewo.a1024)" />
+<link href="style/main.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport"
+	content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+	<div class="container">
+		<div class="heading">
+			<h1 class="title">2048++</h1>
+			<div class="scores-container">
+				<div class="score-container">0</div>
+				<div class="best-container">0</div>
+			</div>
+		</div>
+		<!-- 		<p class="game-intro"> -->
+		<!-- 			键盘挪动数字,使数字最大（<a href="#way">看攻略</a>） -->
+		<!-- 		</p> -->
+		<br>
+		<div style="padding: 5px;">
+			<input id="timer-start-btn" class="b2t"
+				onclick="game.restart();InitializeTimer(form);" type="button"
+				value="    开始    "> <input class="b3t"
+				onclick="StopTheClock()" type="button" value="    停止    "> <span
+				id="timer" class="timer-container">00 : 00 . 00 </span>
+		</div>
 
-    <title>2048++</title>
-  </head>
+		<div class="game-container">
+			<div class="game-message">
+				<p></p>
+				<div class="lower">
+					<a class="retry-button">再玩一次</a>
+				</div>
+			</div>
 
-  <body>
+			<div class="grid-container">
+				<div class="grid-row">
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+				</div>
+				<div class="grid-row">
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+				</div>
+				<div class="grid-row">
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+				</div>
+				<div class="grid-row">
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+					<div class="grid-cell"></div>
+				</div>
+			</div>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ghcc/2048">View on GitHub</a>
+			<div class="tile-container"></div>
+		</div>
+		<br> <br>
+		<p>
+			<a class="share_sina" href="javascript:void();" onclick="share();"
+				target="" title="分享到新浪微博">分享到新浪微博</a>
+		</p>
+		<!-- 		<!-- JiaThis Button BEGIN -->
 
-          <h1 id="project_title">2048++</h1>
-          <h2 id="project_tagline">A small clone of 1024 (https://play.google.com/store/apps/details?id=com.veewo.a1024)</h2>
+		<!-- 		<div class="jiathis_style_32x32"> -->
+		<!-- 			<a class="jiathis_button_tsina"></a> -->
+		<!-- 			<a class="jiathis_button_qzone"></a>  -->
+		<!-- 			<a class="jiathis_button_tqq"></a> <a class="jiathis_button_renren"></a> -->
+		<!-- 			<a class="jiathis_button_kaixin001"></a> <a -->
+		<!-- 				href="http://www.jiathis.com/share?uid=1757913" -->
+		<!-- 				class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a> -->
+		<!-- 			<a class="jiathis_counter_style"></a> -->
+		<!-- 		</div> -->
+		<!-- 		<script type="text/javascript"> -->
+		<!-- // 			var jiathis_config = { -->
+		<!-- // 				data_track_clickback : 'true' -->
+		<!-- // 			}; -->
+		<!-- 		</script> -->
+		<!-- 		<script type="text/javascript" -->
+		<!-- 			src="http://v3.jiathis.com/code_mini/jia.js?uid=1361942435250920" -->
+		<!-- 			charset="utf-8"></script> -->
+		<!-- 		<!-- JiaThis Button END -->
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ghcc/2048/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ghcc/2048/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+		<hr>
+		<p class="game-explanation">玩法:
+			使用键盘方向键，或者触屏手机，左右上下移动，遇到相同的数据就会加起来。</p>
+		<hr>
+		<p>
+			<a name="way"></a>
+		<h2>攻略</h2>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+		攻略一：梯度玩法，始终让左上角值最大，然后向右和向下依次递减（可盲玩） <br> <br>
+		攻略二：首行优先发，先让第一行优先填充数 <br> <br> 攻略三：攻略一的递减原则和攻略二的首行原则的结合。<br>
+		<br>
+		</p>
+		<hr>
+		<p>
+			汉化并且，把原来的最大2048的限制去掉了<br> 原作者： <a
+				href="http://gabrielecirulli.com" target="_blank">Gabriele
+				Cirulli.</a> Based on <a
+				href="https://itunes.apple.com/us/app/1024!/id823499224"
+				target="_blank">1024 by Veewo Studio</a> and conceptually similar to
+			<a href="http://asherv.com/threes/" target="_blank">Threes by
+				Asher Vollmer.</a>
+		</p>
+	</div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+	<script src="js/animframe_polyfill.js"></script>
+	<script src="js/keyboard_input_manager.js"></script>
+	<script src="js/html_actuator.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/tile.js"></script>
+	<script src="js/local_score_manager.js"></script>
+	<script src="js/game_manager.js"></script>
+	<script src="js/application.js"></script>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+	<script type="text/javascript" src="js/timer.js"></script>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+	<script>
+		var shareText = "2048++本次得分0，历史最高得分0";
+		var jiathis_config = {
+			title : shareText
+		}
+	</script>
+	<script type="text/javascript">
+		function share() {
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+			var time = document.querySelector("#timer").innerText;
+			var sourceUrl = "http://ghcc.github.io/2048/";
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">2048++ maintained by <a href="https://github.com/ghcc">ghcc</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-              <script type="text/javascript">
+			// 			var scoreContainer = document.querySelector(".score-container").innerText;
+			var bestContainer = document.querySelector(".best-container").innerText;
+			var scoreContainer = game.score;
+			var shareText = "2048%2B%2B挑战结果：耗时（" + time + "），最大数为（" + game.maxNumber
+					+ "），得分（" + scoreContainer + "），历史最高得分（" + bestContainer
+					+ "） " + sourceUrl;
+			window
+					.open("http://service.weibo.com/share/share.php?appkey=&url=&title="
+							+ shareText + "&sourceUrl="+sourceUrl);
+		}
+	</script>
+	
+	 <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -84,6 +170,6 @@ $ git checkout gh-pages
             } catch(err) {}
           </script>
 
-
-  </body>
+		  
+</body>
 </html>
